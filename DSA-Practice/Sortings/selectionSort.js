@@ -18,22 +18,45 @@ Here are the implementation steps for Selection Sort:
     
     */
 
-let orginalArray = [6, 1, 7, 8, 9, 3, 5, 4, 2];
+let orginalArray = [6, 1, 7, 8, 9, 3, 5, 0, 4, 2, -5];
 
-for (let i = 0; i < orginalArray.length - 1; i++) {
-  let tempSmallIndex = i;
-  for (let j = i + 1; j < orginalArray.length; j++) {
-    if (orginalArray[tempSmallIndex] > orginalArray[j]) {
-      tempSmallIndex = j;
+function selectionSort(originalArray) {
+  for (let i = 0; i < orginalArray.length - 1; i++) {
+    let tempSmallIndex = i;
+    for (let j = i + 1; j < orginalArray.length; j++) {
+      if (orginalArray[tempSmallIndex] > orginalArray[j]) {
+        tempSmallIndex = j;
+      }
     }
+    [orginalArray[i], orginalArray[tempSmallIndex]] = [
+      orginalArray[tempSmallIndex],
+      orginalArray[i],
+    ];
+    // let temp = orginalArray[i];
+    // orginalArray[i] = orginalArray[tempSmallIndex];
+    // orginalArray[tempSmallIndex] = temp;
   }
-  [orginalArray[i], orginalArray[tempSmallIndex]] = [
-    orginalArray[tempSmallIndex],
-    orginalArray[i],
-  ];
-  // let temp = orginalArray[i];
-  // orginalArray[i] = orginalArray[tempSmallIndex];
-  // orginalArray[tempSmallIndex] = temp;
+  return orginalArray;
 }
 
-console.log(orginalArray);
+function selectionSort2(orginalArray) {
+  console.time("selectionSort");
+  for (let i = 0; i < orginalArray.length; i++) {
+    let smallIndex = i;
+    for (let j = i + 1; j < orginalArray.length; j++) {
+      // 7 < 1
+      if (orginalArray[j] < orginalArray[smallIndex]) {
+        // [6, 1, 7, 8, 9, 3, 5, 4, 2]
+        smallIndex = j; //1
+      }
+    }
+    [orginalArray[i], orginalArray[smallIndex]] = [
+      orginalArray[smallIndex],
+      orginalArray[i],
+    ];
+  }
+  console.timeEnd("selectionSort");
+  return orginalArray;
+}
+
+console.log(selectionSort2([5, 2, 3, 1]));

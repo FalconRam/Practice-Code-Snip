@@ -10,8 +10,8 @@ function removeElement(nums, val) {
       t++;
     }
   }
-
-  return { length: t, arr: nums.slice(0, t) };
+  nums.length = t;
+  return { length: t, arr: nums };
 }
 
 console.log(removeElement(nums, val));

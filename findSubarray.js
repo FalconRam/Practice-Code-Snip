@@ -6,7 +6,7 @@ Given integer array, Find a subarray which has maximum sum
 
 // Kadane's Algorithm
 
-//let array = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+// let array = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 let array = [5, 4, -1, 7, 8];
 
 function findSubarray() {
@@ -18,15 +18,15 @@ function findSubarray() {
     return max;
   }
 
-    // for (let i = 0; i < array.length; i++) {
-    //   sum += array[i];
-    //   if (sum > max) {
-    //     max = sum;
-    //   }
-    //   if (sum < 0) {
-    //     sum = 0;
-    //   }
-    // }
+  // for (let i = 0; i < array.length; i++) {
+  //   sum += array[i];
+  //   if (sum > max) {
+  //     max = sum;
+  //   }
+  //   if (sum < 0) {
+  //     sum = 0;
+  //   }
+  // }
 
   for (let i = 0; i < array.length; i++) {
     sum += array[i];
@@ -40,17 +40,16 @@ function findSubarray() {
     }
 
     if (temp > sum) {
-      console.log({ temp: temp, sum: sum });
+      // console.log({ temp: temp, sum: sum });
       endIndex = i;
     }
   }
-
   console.log({
     sum: max,
-    subArray: array.slice(startIndex, endIndex),
     startIndex: startIndex,
     endIndex: endIndex,
+    subArray: array.slice(startIndex, endIndex),
   });
   return max;
 }
-findSubarray();
+console.log(findSubarray());
