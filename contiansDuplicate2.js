@@ -22,7 +22,11 @@ Output: false
 function contiansDuplicate(nums, k) {
   for (let i = 0; i < nums.length; i++) {
     for (let j = i + 1; j < nums.length; j++) {
-      console.log(`${nums[i]}, ${nums[j]} >>>> isEqual ${nums[i] === nums[j]} && ${Math.abs(i - j)} <= K is ${k}`);
+      console.log(
+        `${nums[i]}, ${nums[j]} >>>> isEqual ${
+          nums[i] === nums[j]
+        } && ${Math.abs(i - j)} <= ${k} is ${Math.abs(i - j) <= k}`
+      );
       if (nums[i] === nums[j] && Math.abs(i - j) <= k) {
         return true;
       }
@@ -31,5 +35,5 @@ function contiansDuplicate(nums, k) {
   return false;
 }
 
-console.log(contiansDuplicate([1, 0, 1, 1], 1));
+// console.log(contiansDuplicate([1, 0, 1, 1], 1));
 console.log(contiansDuplicate([1, 2, 3, 1, 2, 3], 2));
