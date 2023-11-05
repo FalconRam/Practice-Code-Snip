@@ -51,38 +51,56 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 let nums = [1, 1, 1, 2, 2, 3];
 
 function removeDuplicatesFromSortedArrayII(nums) {
-  let k = 0;
+  // My Try
+  // let k = 0;
   //   let j = 0;
-  let counter = 1;
-  let replacedCount = 0;
+  // let counter = 1;
+  // let replacedCount = 0;
 
-  // for (let i = 0; i < nums.length; i++) { // i = 1
-  while (k < nums.length - 1) {
-    // k = 4
-    if (replacedCount > 0) {
-      // replacedCount = 1
-      // [1, 1, 2, 2, 2, 3]
-      nums[k + 1] = nums[k + 2]; // [1, 1, 2, 2, 3, 3]
+  // // for (let i = 0; i < nums.length; i++) { // i = 1
+  // while (k < nums.length - 1) {
+  //   // k = 4
+  //   if (replacedCount > 0) {
+  //     // replacedCount = 1
+  //     // [1, 1, 2, 2, 2, 3]
+  //     nums[k + 1] = nums[k + 2]; // [1, 1, 2, 2, 3, 3]
+  //     k++; // 4
+  //   }
+  //   if (nums[k] === nums[k + 1]) {
+  //     // [1, 1, 2, 2, 3, 3]
+
+  //     counter++; // 1
+  //     k++; // 5
+  //   }
+  //   console.log({ counter });
+  //   if (counter === 3) { // 2
+  //     nums[k + 1] = nums[k + 2]; // [1, 1, 2, 2, 2, 3]
+  //     console.log({ k });
+  //     replacedCount++; // 1
+  //     counter = 1; // reset
+  //     k++; // 3
+  //   }
+  //   console.log({ nums, counter, replacedCount });
+  // }
+  // nums.length = nums.length - replacedCount;
+
+  // with My try, got help from GPT
+  // - Approach - we have to compare the current element with previous element 
+  // and incr the counter if match or else keep as 1
+  // Keep copying the current element and allowing each unique element to appear at most twice.
+
+  let k = 0;
+  let counter = 1;
+  for (let i = 1; i < nums.length; i++) { // 5
+    if (nums[i] === nums[i - 1]) { // [1, 1, 2, 2, 2, 3]
+      counter++; // 2
+    } else counter = 1; // 
+    if (counter <= 2) {
       k++; // 4
     }
-    if (nums[k] === nums[k + 1]) {
-      // [1, 1, 2, 2, 3, 3]
-
-      counter++; // 1
-      k++; // 5
-    }
-    console.log({ counter });
-    if (counter === 3) { // 2
-      nums[k + 1] = nums[k + 2]; // [1, 1, 2, 2, 2, 3]
-      console.log({ k });
-      replacedCount++; // 1
-      counter = 1; // reset
-      k++; // 3
-    }
-    console.log({ nums, counter, replacedCount });
+    nums[k] = nums[i]; // [1, 1, 2, 2, 3, 3]
   }
-  nums.length = nums.length - replacedCount;
-
+  nums.length = k + 1; // 4 + 1 = 5
   return nums;
 }
 
