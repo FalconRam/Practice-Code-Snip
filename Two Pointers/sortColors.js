@@ -52,14 +52,14 @@ function sortColors(nums) {
     if (nums[current] === 0) {
       [nums[current], nums[left]] = [nums[left], nums[current]];
       left++;
-      // current++;
+      current++;
     } else if (nums[current] === 2) {
       [nums[current], nums[right]] = [nums[right], nums[current]];
       right--;
     }
-    // else {
+    else {
       current++;
-    // }
+    }
   }
   return nums;
 }
