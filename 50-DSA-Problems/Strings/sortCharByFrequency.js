@@ -1,5 +1,5 @@
 /*
-==> Sort Characters By Frequency -- https://leetcode.com/problems/sort-characters-by-frequency/
+==> checkPermutation -- https://leetcode.com/problems/sort-characters-by-frequency/
 Given a string s, sort it in decreasing order based on the frequency of the characters. 
 The frequency of a character is the number of times it appears in the string.
 
@@ -30,7 +30,7 @@ function sortCharByFrequency(s) {
   const charFrequency = new Map();
   for (let char of s)
     charFrequency.set(char, (charFrequency.get(char) || 0) + 1);
-
+  console.log(charFrequency);
   // Sort the char by character frequency
   // Since charFrequency is instance of Map() we have privileges to access methods like keys() directly
   const sortedChars = Array.from(charFrequency.keys()).sort(
